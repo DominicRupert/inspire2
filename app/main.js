@@ -13,7 +13,7 @@ class App {
   quoteController = new QuoteController();
   clockController = new ClockController();
   weatherController = new WeatherController();
-  toDoController = new ToDoController();
+  todoController = new ToDoController();
 }
 
 window["app"] = new App();

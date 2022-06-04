@@ -2,12 +2,12 @@ import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
-  /** @type {import('./Models/Value').Value[]} */
-  values = []
-weather= []
+ 
+  todos = []
+  myTodos = []
+  weather= []
   quotes = []
   images = []
-  todos = []
 }
 
 export const ProxyState = new Proxy(new AppState(), {
