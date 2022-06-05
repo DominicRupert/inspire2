@@ -10,11 +10,11 @@ export class Todo {
 
   get Template() {
     return /*html*/ ` 
-    <div class="  align-items-center pb-2 row   card-body " >
+   
         
-        <div class=" px-3 d-flex col-6 ">
+        <div class=" px-3 col d-flex flex-row align-items-center ">
         
-        <input  type="checkbox" class="form-check-input p-2 d-flex align-items-center" id="${
+        <input  type="checkbox" class="form-check-input p-2 align-items-center" id="${
           this.id
         }" onclick="app.todoController.toggleChecked('${this.id}')"  ${
       this.completed ? "checked" : ""  
@@ -25,7 +25,7 @@ export class Todo {
         </h5>
         </div>
         
-        </div>
+      
         `;
   }
 }

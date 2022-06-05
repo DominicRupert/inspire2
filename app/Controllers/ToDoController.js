@@ -1,8 +1,7 @@
 import { ProxyState } from "../AppState.js";
 import { apiToDoService } from "../Services/ApiToDoService.js";
-import { load, save } from "../Utils/Storage.js";
 
-import { Todo } from "../Models/ToDo.js";
+
 import { Pop } from "../Utils/Pop.js";
 
 function _drawTodos() {
@@ -16,10 +15,10 @@ function _drawTodos() {
 export class ToDoController {
   constructor() {
     ProxyState.on("todos", _drawTodos);
-    ProxyState.on("todos", save);
+    
 
     this.getTodos();
-    load();
+    
 
     _drawTodos();
   }
@@ -46,6 +45,7 @@ export class ToDoController {
       };
 
       await apiToDoService.postTodo(todoData);
+      form.reset();
     } catch (error) {
       Pop.toast(error.message, "error");
     }
@@ -56,9 +56,9 @@ export class ToDoController {
  
   }
   async deleteTodo(id) {
-    if (await Pop.confirm()) {
+    // if (await Pop.confirm()) {
       apiToDoService.deleteTodos(id);
-      Pop.toast("deleted", "success");
+      // Pop.toast("deleted", "success");
     }
   }
-}
+

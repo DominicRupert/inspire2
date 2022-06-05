@@ -1,7 +1,7 @@
 // import { ValuesController } from "./Controllers/ValuesController.js";
 import {ImageApiController} from "./Controllers/ImageApiController.js";
 import { QuoteController } from "./Controllers/QuoteController.js";
-import {ClockController} from "./Controllers/GetController.js";
+import {ClockController} from "./Controllers/ClockController.js";
 import { WeatherController } from "./Controllers/WeatherController.js";
 import { ToDoController } from "./Controllers/ToDoController.js";
 
