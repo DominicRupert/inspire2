@@ -1,6 +1,5 @@
 import { ProxyState } from "../AppState.js";
 import { apiToDoService } from "../Services/ApiToDoService.js";
-import { myToDoService } from "../Services/MyToDoService.js";
 import { load, save } from "../Utils/Storage.js";
 
 import { Todo } from "../Models/ToDo.js";
@@ -9,15 +8,15 @@ import { Pop } from "../Utils/Pop.js";
 function _drawTodos() {
   let template = "";
 
-  ProxyState.myTodos.forEach((t) => (template += t.Template));
+  ProxyState.todos.forEach((t) => (template += t.Template));
 
   document.getElementById("todos").innerHTML = template;
 }
 
 export class ToDoController {
   constructor() {
-    ProxyState.on("myTodos", save);
-    ProxyState.on("myTodos", _drawTodos);
+    ProxyState.on("todos", _drawTodos);
+    ProxyState.on("todos", save);
 
     this.getTodos();
     load();
@@ -32,33 +31,29 @@ export class ToDoController {
       console.error(error);
       Pop.toast(error.message, "error");
     }
+    _drawTodos();
   }
 
-  async addTodo(todoId) {
+  async addTodo(id) {
     try {
       window.event.preventDefault();
       /**@type {HTMLFormElement} */
       // @ts-ignore
+      const form = window.event.target;
+      const todoData = {
+        id,
+        description: form.description.value,
+      };
 
-      await apiToDoService.postTodo();
+      await apiToDoService.postTodo(todoData);
     } catch (error) {
       Pop.toast(error.message, "error");
     }
-    _drawTodos();
   }
-  toggleChecked(id) {
-    myToDoService.toggleChecked(id);
+  async toggleChecked(id) {
+    await apiToDoService.toggleChecked(id);
 
-    ProxyState.myTodos.forEach((todo) => {
-      if (todo.id == id) {
-        apiToDoService.editTodo({
-          id: todo.id,
-          completed: todo.completed,
-          description: todo.description,
-          user: todo.user,
-        });
-      }
-    });
+ 
   }
   async deleteTodo(id) {
     if (await Pop.confirm()) {

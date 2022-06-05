@@ -6,8 +6,8 @@ function _drawQuote(){
     const quotes = ProxyState.quotes;
     let template = ''
      template +=`
-     <div class="col p-3">
-     <div class="card ">
+     <div class="col-sm-2 p-3 text-center fixed-bottom">
+     <div class="card  ">
      <div class="card-body ">
      <blockquote class="blockquote mb-0  ">
        <p class="quotes">${ProxyState.quotes.content}</p>

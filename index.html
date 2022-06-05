@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/style/main.css" />
   <link rel="stylesheet" href="assets/style/style.css" />
+  <link rel="stylesheet" href="assets/style/bootstrap.min (2).css">
   <title>inspire2</title>
 </head>
 
@@ -23,30 +24,30 @@
         <div class="col-12">
           <div class="container-fluid ">
             <div class="row  rounded ">
-              <div class="col-3 ">
+
+              <div class="col-12 " id="weather">
               </div>
-              <div class="col-6 clock d-flex flex-column justify-content-center align-items-center ">
-                <h1 id="clock"></h1>
-                <h1 id="time"></h1>
-              </div>
-              <div class="col-3" id="weather">
+              <div class="row">
+                <div class="col-4"></div>
+                <div class="col-md-4 py-3 clock card d-flex flex-column justify-content-center align-items-center ">
+                  <h1 id="clock"></h1>
+                  <h1 id="time"></h1>
+                </div>
+                <div class="col-4"></div>
               </div>
 
             </div>
           </div>
         </div>
       </div>
-      <div class="row" id="todos">
 
-
-      </div>
 
     </div>
 
   </main>
 
-  <div class=" d-flex flex-row justify-content-between">
-    <div class="container d-flex ">
+  <div class="  container-fluid d-flex justify-content-around">
+    <div class="container-fluid  ">
 
 
       <div class="row " id="quotes">
@@ -55,19 +56,31 @@
       </div>
     </div>
 
-    <div class="container-fluid  pb-3 d-flex card justify-content-end">
-      <form class="form-inline" onsubmit="app.todoController.addTodo()">
-        <input type="text" class="form-control" id="description" name="description" placeholder="new todo">
-        <button type="submit" class="btn btn-primary mb-2">New Todo</button>
+    
+    
+    
+    
+    <div class="container-fluid d-flex flex-column justify-content-end">
+      
+      <div class="col d-flex m-3 card">
+        <div class="row " id="todos">
+          
+        </div>
+          <form class="" onsubmit="app.todoController.addTodo()">
+            <input type="text" class="form-control" id="description" name="description" placeholder="new todo">
+            <button type="submit" class="btn btn-dark text-white  my-2">Todo</button>
+            
+          </form>
+        </div>
+        
+        
+            </div>
+          </div>
+     
+        
 
-      </form>
 
 
-
-
-
-    </div>
-  </div>
 
 
 
