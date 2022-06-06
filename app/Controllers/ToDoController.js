@@ -5,13 +5,18 @@ import { apiToDoService } from "../Services/ApiToDoService.js";
 import { Pop } from "../Utils/Pop.js";
 
 function _drawTodos() {
+  let todos = ProxyState.todos;
   let template = "";
+let todoCount = 0
+  ProxyState.todos.forEach((t) => { template += t.Template
+    if (t.completed){
+      todoCount++;
+    }
 
-  ProxyState.todos.forEach((t) => (template += t.Template));
-
+  })
   document.getElementById("todos").innerHTML = template;
+  document.getElementById("todo-count").innerText = todoCount + `/${todos.length} `;
 }
-
 export class ToDoController {
   constructor() {
     ProxyState.on("todos", _drawTodos);
@@ -32,6 +37,7 @@ export class ToDoController {
     }
     _drawTodos();
   }
+  
 
   async addTodo(id) {
     try {
@@ -56,9 +62,9 @@ export class ToDoController {
  
   }
   async deleteTodo(id) {
-    // if (await Pop.confirm()) {
+    if (await Pop.confirm()) {
       apiToDoService.deleteTodos(id);
-      // Pop.toast("deleted", "success");
+      Pop.toast("deleted", "success");
     }
   }
-
+}

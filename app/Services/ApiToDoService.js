@@ -9,6 +9,7 @@ class ApiToDoService {
     const res = await sandboxApi.get("dom/todos");
     ProxyState.todos = res.data.map((todo) => new Todo(todo));
     console.log("todos", res.data);
+    
 
   }
   async postTodo(data){

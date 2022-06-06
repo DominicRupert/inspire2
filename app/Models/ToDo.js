@@ -1,12 +1,15 @@
-import {apiToDoService} from "../Services/ApiToDoService.js";
+import { ProxyState } from "../AppState.js";
 
 export class Todo {
   constructor(data) {
     this.id = data.id;
     this.description = data.description;
-    this.completed = data.completed;
+    this.completed = data.completed || false;
     this.user = data.user;
   }
+ 
+ 
+
 
   get Template() {
     return /*html*/ ` 
@@ -28,4 +31,6 @@ export class Todo {
       
         `;
   }
+
+
 }
